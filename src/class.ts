@@ -6,7 +6,7 @@ export class User {
     }
 
     setName(value: string): void{
-        this.name = this.name;
+        this.name = value;
     }
 
     getName = (): string => {
@@ -19,6 +19,7 @@ class Admin extends  User{
     read: boolean = true;
     write: boolean = true;
     phone: string;
+    private _email: string = "";
 
     constructor(phone: string, name: string, age: number){
         super(name, age);
@@ -31,8 +32,21 @@ class Admin extends  User{
             write: this.write
         }
     }
+
+    set email(value: string) {
+        if(value.length < 5){
+            this._email = 'Email salah';
+        }else{
+            this._email = value;
+        }
+    }
+
+    get email(): string{
+        return this._email;
+    }
 }
 
 let admin = new Admin("08676", "Irvan", 24);
-
-console.log(`${admin.getName()} ${admin.getRole().write}`)
+admin.setName('Ari');
+admin.email = 'irvan@gmail.com';
+console.log(`${admin.getName()} ${admin.getRole().write} ${admin.email}`)

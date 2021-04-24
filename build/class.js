@@ -26,7 +26,7 @@ var User = /** @class */ (function () {
         this.name = name;
     }
     User.prototype.setName = function (value) {
-        this.name = this.name;
+        this.name = value;
     };
     return User;
 }());
@@ -37,6 +37,7 @@ var Admin = /** @class */ (function (_super) {
         var _this = _super.call(this, name, age) || this;
         _this.read = true;
         _this.write = true;
+        _this._email = "";
         _this.phone = phone;
         return _this;
     }
@@ -46,7 +47,24 @@ var Admin = /** @class */ (function (_super) {
             write: this.write
         };
     };
+    Object.defineProperty(Admin.prototype, "email", {
+        get: function () {
+            return this._email;
+        },
+        set: function (value) {
+            if (value.length < 5) {
+                this._email = 'Email salah';
+            }
+            else {
+                this._email = value;
+            }
+        },
+        enumerable: false,
+        configurable: true
+    });
     return Admin;
 }(User));
 var admin = new Admin("08676", "Irvan", 24);
-console.log(admin.getName() + " " + admin.getRole().write);
+admin.setName('Ari');
+admin.email = 'irvan@gmail.com';
+console.log(admin.getName() + " " + admin.getRole().write + " " + admin.email);
