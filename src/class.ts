@@ -18,6 +18,12 @@ export class User {
 class Admin extends  User{
     read: boolean = true;
     write: boolean = true;
+    phone: string;
+
+    constructor(phone: string, name: string, age: number){
+        super(name, age);
+        this.phone = phone;
+    }
 
     getRole(): {read: boolean, write: boolean}{
         return{
@@ -27,6 +33,6 @@ class Admin extends  User{
     }
 }
 
-let admin = new Admin("Irvan", 24);
+let admin = new Admin("08676", "Irvan", 24);
 
 console.log(`${admin.getName()} ${admin.getRole().write}`)
