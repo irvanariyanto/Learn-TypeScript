@@ -38,3 +38,18 @@ const Add: Tambah = (val1: number, val2: number): number => {
 
 let total: number = Add(10, 10);
 console.log(total);
+
+// default parameter
+const fullname = (first: string, last: string = "Irvan"): string => {
+    return `${first} ${last}`
+} 
+
+console.log(fullname("Ari"));
+
+// optional parameter
+// tidak bisa untuk return number
+const getUmur = (val1: string, val2?: string): string => {
+    return `${val1} ${val2}`;
+}
+
+console.log(getUmur("A"));
