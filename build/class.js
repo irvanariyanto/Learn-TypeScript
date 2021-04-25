@@ -47,6 +47,9 @@ var Admin = /** @class */ (function (_super) {
             write: this.write
         };
     };
+    Admin.getNameRole = function () {
+        return "HEI";
+    };
     Object.defineProperty(Admin.prototype, "email", {
         get: function () {
             return this._email;
@@ -62,9 +65,9 @@ var Admin = /** @class */ (function (_super) {
         enumerable: false,
         configurable: true
     });
+    Admin.getRoleName = "Admin";
     return Admin;
 }(User));
 var admin = new Admin("08676", "Irvan", 24);
-admin.setName('Ari');
-admin.email = 'irvan@gmail.com';
-console.log(admin.getName() + " " + admin.getRole().write + " " + admin.email);
+var newAdmin = Admin.getNameRole();
+console.log(newAdmin);
